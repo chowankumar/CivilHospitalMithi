@@ -5,9 +5,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import Slide1 from '/Slide1.jpg';
-import Slide2 from '/Slide2.jpg';
-import Slide3 from '/Slide3.jpg';
+import Slide1 from '/Slide11.jpg';
+import Slide2 from '/Slide22.jpg';
+import Slide3 from '/Slide33.jpg';
 
 import { MdOutlineExpandMore } from "react-icons/md";
 
