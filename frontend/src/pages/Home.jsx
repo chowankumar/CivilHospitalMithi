@@ -3,12 +3,13 @@ import Header from '../components/Header'
 import Speaciality from '../components/Speaciality'
 import TopDoctors from '../components/TopDoctors'
 import Banner from '../components/Banner'
+import Hero from './../components/Hero'
 
 const Home = () => {
   return (
     <div>
-    
-      <Header/>
+       <Hero/>
+      {/* <Header/> */}
       <Speaciality/>
       <TopDoctors/>
       <Banner/>
