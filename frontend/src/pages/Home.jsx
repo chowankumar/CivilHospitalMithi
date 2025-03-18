@@ -5,6 +5,9 @@ import TopDoctors from '../components/TopDoctors'
 import Banner from '../components/Banner'
 import Hero from './../components/Hero'
 import Wards from '../components/Wards'
+import Facilities from '../components/Facilities'
+import Dashboard from '../components/Dashboard'
+import OpdTimetable from '../components/OpdTimetable'
 
 const Home = () => {
   return (
@@ -15,6 +18,9 @@ const Home = () => {
       <TopDoctors/>
       <Wards/>
       <Banner/>
+      <Facilities/>
+      <Dashboard/>
+      
 
     </div>
   )
