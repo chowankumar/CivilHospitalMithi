@@ -8,6 +8,7 @@ import Wards from '../components/Wards'
 import Facilities from '../components/Facilities'
 import Dashboard from '../components/Dashboard'
 import OpdTimetable from '../components/OpdTimetable'
+ 
 
 const Home = () => {
   return (
@@ -20,6 +21,7 @@ const Home = () => {
       <Banner/>
       <Facilities/>
       <Dashboard/>
+      {/* <MedicalChatbot/> */}
       
 
     </div>
