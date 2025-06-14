@@ -8,19 +8,15 @@ import appointmentModel from '../models/appointmentModel.js'
 
 const registerUser = async (req, res) => {
     try {
-
         const { name, email, password } = req.body;
         if (!name || !password || !email) {
             return res.json({ success: false, message: "Missing Details" })
-        }
-
+        } 
         const user = await userModel.findOne({email});
         if(user){
             return res.json({success:false,message:'User already reigtered'})
          }
  
-
-
         if (!validator.isEmail(email)) {
             return res.json({ success: false, message: "Enter a valid email" })
         }
@@ -28,8 +24,6 @@ const registerUser = async (req, res) => {
         if (password.length < 8) {
             return res.json({ success: false, message: "Enter a strong password" })
         }
-
-
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt)
 
@@ -37,7 +31,6 @@ const registerUser = async (req, res) => {
             name,
             email,
             password: hashedPassword,
-
         }
 
         const newUser = new userModel(userData);
@@ -62,11 +55,10 @@ const loginUser = async (req, res) => {
     try {
         const {email,password} = req.body;
         const user = await userModel.findOne({email});
-
         if(!user){
            return res.json({success:false,message:'User does not exist'})
         }
-
+ 
         const isMatch = await bcrypt.compare(password,user.password);
 
         if(isMatch){
@@ -87,8 +79,11 @@ const loginUser = async (req, res) => {
 
 const getProfile = async(req,res)=>{
     try {
-        const{userId} =   req.body;
-
+    const{userId} =   req.body;
+    console.log(userId)
+    if(!userId){
+        console.log('userId is missing')
+    }
     const userData = await userModel.findById(userId).select('-password')
     res.json({success:true,userData});
         
@@ -111,12 +106,9 @@ const  updateProfile = async (req,res)=>{
         }
 
         await userModel.findByIdAndUpdate(userId,{name,phone,address:JSON.parse(address),dob,gender})
-
-
         if(imageFile){
             const imageUpload = await cloudinary.uploader.upload(imageFile.path,{resource_type:'image'})
             const imageUrl = imageUpload.secure_url;
-
             await userModel.findByIdAndUpdate(userId,{image:imageUrl})
         }
         
